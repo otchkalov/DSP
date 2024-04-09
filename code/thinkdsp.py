@@ -261,7 +261,7 @@ class _SpectrumParent:
     def plot(self, high=None, **options):
         """Plots amplitude vs frequency.
 
-        Note: if this is a full spectrum, it ignores low and high
+        Note: if this is a full spectrum, it ignores low and high 
 
         high: frequency to cut off at
         """
