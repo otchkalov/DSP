@@ -258,19 +258,21 @@ class _SpectrumParent:
         j = None if high is None else find_index(high, fs) + 1
         return fs[i:j], amps[i:j]
 
-    def plot(self, high=None, **options):
+    def plot(self, low=None, high=None, **options):
         """Plots amplitude vs frequency.
 
         Note: if this is a full spectrum, it ignores low and high 
 
+        low: frequency to start from
         high: frequency to cut off at
         """
         if self.full:
             fs, amps = self.render_full(high)
             plt.plot(fs, amps, **options)
         else:
+            j = None if low is None else find_index(low, self.fs)
             i = None if high is None else find_index(high, self.fs)
-            plt.plot(self.fs[:i], self.amps[:i], **options)
+            plt.plot(self.fs[j:i], self.amps[j:i], **options)
 
     def plot_power(self, high=None, **options):
         """Plots power vs frequency.
