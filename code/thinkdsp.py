@@ -113,7 +113,8 @@ def read_wave(filename="sound.wav"):
         xs = np.fromstring(z_str, dtype=np.int8).astype(np.int32)
         ys = (xs[2::3] * 256 + xs[1::3]) * 256 + xs[0::3]
     else:
-        ys = np.fromstring(z_str, dtype=dtype_map[sampwidth])
+        # ys = np.fromstring(z_str, dtype=dtype_map[sampwidth])
+        ys = np.frombuffer(z_str, dtype=dtype_map[sampwidth])
 
     # if it's in stereo, just pull out the first channel
     if nchannels == 2:
